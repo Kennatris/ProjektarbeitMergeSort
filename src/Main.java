@@ -25,7 +25,7 @@ public class Main {
         printAggregatedRows(aggregatedRows);
 
         Sorter sorter = new Sorter();
-        sorter.sort(aggregatedRows); // sortiert nach range absteigend
+        sorter.sort(aggregatedRows); 
 
         System.out.println("\n\n--- SORTIERTE AGGREGIERTE DATEN (nach range absteigend) ---");
         printAggregatedRows(aggregatedRows);
@@ -42,12 +42,12 @@ public class Main {
                 lines.add(line);
             }
 
-            int total = lines.size() - 1; // Header überspringen
+            int total = lines.size() - 1;
             System.out.println("Einlesen aus Datei: " + file.getName());
             System.out.println("Gesamtzeilen (ohne Header): " + total);
 
             for (int i = 1; i < lines.size(); i++) {
-                String[] tokens = lines.get(i).split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                String[] tokens = lines.get(i).split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1); // Google-Sheets ist seltsam...
 
                 if (tokens.length < 9) continue;
 
@@ -64,7 +64,7 @@ public class Main {
                     System.err.println("Ungültige Zeile übersprungen: " + lines.get(i));
                 }
 
-                // Ladebalken anzeigen
+                // was ein waste ...
                 if (total > 0) {
                     int progress = (i * 100) / total;
                     showProgressBar(progress);
